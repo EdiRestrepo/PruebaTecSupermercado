@@ -1,5 +1,6 @@
 package com.ejercicio.PruebaTecSupermercado.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.List;
 public class VentaDTO {
     //datos de la venta
     private Long id;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate fecha;
     private String estado;
 

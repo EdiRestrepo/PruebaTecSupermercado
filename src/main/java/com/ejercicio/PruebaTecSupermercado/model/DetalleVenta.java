@@ -1,9 +1,6 @@
 package com.ejercicio.PruebaTecSupermercado.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class DetalleVenta {
 
     @Id
@@ -20,11 +18,13 @@ public class DetalleVenta {
     private Long id;
 
     //Venta a la que pertenece el detalle. Muchas detalles pueden pertenecer a una venta
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "ventaId")
     private Venta venta;
 
     //Producto vendido. Muchas detalles pueden pertenecer a un producto
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "productoId")
     private Producto producto;
 
     private Integer cantidadProducto;

@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Venta {
 
     @Id
@@ -29,6 +30,6 @@ public class Venta {
     private Sucursal sucursal;
 
     //Lista de detalles de la venta. Una venta puede tener muchos detalles
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DetalleVenta> detalle = new ArrayList<>();
 }
